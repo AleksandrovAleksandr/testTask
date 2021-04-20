@@ -61,17 +61,17 @@ const handlers = {
 }
 
 const deleteAnswer = (answers, id) => {
-  const arr = answers.map(answer => Object.assign({}, answer))
+  const arr = copyArrOfObjects(answers)
   return arr.filter(a => a.id !== id)
 }
 
 const setAnswer = answers => {
-  const arr = answers.map(answer => Object.assign({}, answer))
+  const arr = copyArrOfObjects(answers)
   return arr.concat({id: uuidv4(), text: '', isRightAnswer: false})
 }
 
 const addAnswerText = (answers, id, text) => {
-  const arr = answers.map(answer => Object.assign({}, answer))
+  const arr = copyArrOfObjects(answers)
   return arr.map(a => {
     a.text = a.id === id ? text : ''
     return a
@@ -79,7 +79,7 @@ const addAnswerText = (answers, id, text) => {
 }
 
 const setIsRightAnswer = (answers, id) => {
-  const arr = answers.map(answer => Object.assign({}, answer))
+  const arr = copyArrOfObjects(answers)
   return arr.map(a => {
     a.isRightAnswer = a.id === id ? true : false
     return a
@@ -87,7 +87,7 @@ const setIsRightAnswer = (answers, id) => {
 }
 
 const setIsRightAnswers = (answers, id) => {
-  const arr = answers.map(answer => Object.assign({}, answer))
+  const arr = copyArrOfObjects(answers)
   return arr.map(a => {
     if (a.id === id) a.isRightAnswer = !a.isRightAnswer
     return a
@@ -95,7 +95,7 @@ const setIsRightAnswers = (answers, id) => {
 }
 
 const clearIsRightAnswers = answers => {
-  const arr = answers.map(answer => Object.assign({}, answer))
+  const arr = copyArrOfObjects(answers)
   return arr.map(a => {
     a.isRightAnswer = false
     return a
@@ -106,5 +106,7 @@ const quizReducer = (state = initialState, action) => {
   const handler = handlers[action.type] ?? handlers.DEFAULT
   return handler(state, action)
 }
+
+const copyArrOfObjects = array => array.map(item => Object.assign({}, item))
 
 export default quizReducer
