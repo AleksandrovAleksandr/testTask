@@ -1,0 +1,26 @@
+{
+  "quiz": [
+    {
+      "id": 1,
+      "text": "How much is the fish?",
+      "typeOfAnswer": "one",
+      "answers": [
+        {
+          "id": 1,
+          "text": "100",
+          "isRightAnswer": true
+        },
+        {
+          "id": 2,
+          "text": "130",
+          "isRightAnswer": false
+        },
+        {
+          "id": 3,
+          "text": "140",
+          "isRightAnswer": false
+        }
+      ]
+    }
+  ]
+}
