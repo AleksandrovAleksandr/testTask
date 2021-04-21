@@ -7,7 +7,7 @@ import SetAnswerButton from '../UI/SetAnswerButton/SetAnswerButton'
 const Answers = ({answers, deleteAnswer, setAnswer}) => {
   return (
     <>
-      <ul>
+      <ol>
         {answers.map((answer, i) => (
           <li key={i}>
             <Answer
@@ -22,7 +22,7 @@ const Answers = ({answers, deleteAnswer, setAnswer}) => {
             />
           </li>
         ))}
-      </ul>
+      </ol>
 
       <SetAnswerButton
         onClick={() => {

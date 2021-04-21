@@ -1,9 +1,13 @@
+import Radio from '../UI/Radio/Radio'
+import Checkbox from '../UI/Checkbox/Checkbox'
+
 import {connect} from 'react-redux'
 import {
   addAnswerText,
   setRightAnswer,
   pickRightAnswers,
 } from '../../store/actions/actions'
+import InputText from '../UI/InputText/InputText'
 
 const Answer = ({
   id,
@@ -17,14 +21,9 @@ const Answer = ({
 }) => {
   return (
     <div>
-      <input
-        type="text"
-        value={text}
-        onChange={e => addText(id, e.target.value)}
-      />
+      <InputText value={text} onChange={e => addText(id, e.target.value)} />
       {typeOfAnswer === 'one' && (
-        <input
-          type="radio"
+        <Radio
           name={questionId}
           value={id}
           checked={isRightAnswer}
@@ -34,8 +33,7 @@ const Answer = ({
         />
       )}
       {typeOfAnswer === 'many' && (
-        <input
-          type="checkbox"
+        <Checkbox
           checked={isRightAnswer}
           onChange={() => {
             pickRightAnswers(id)

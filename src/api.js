@@ -1,44 +1,44 @@
-//Fetch Tasks
+//Fetch Quizes
 
-const fetchTasks = async () => {
-  const res = await fetch('http://localhost:5000/tasks')
+const fetchQuizes = async () => {
+  const res = await fetch('http://localhost:5000/quizes')
   const data = await res.json()
 
   return data
 }
 
-// Fetch Task
-const fetchTask = async id => {
-  const res = await fetch(`http://localhost:5000/tasks${id}`)
+// Fetch Quiz
+const fetchQuiz = async id => {
+  const res = await fetch(`http://localhost:5000/quizes${id}`)
   const data = await res.json()
 
   return data
 }
 
-//Add Task
+//Add Quiz
 
-const addTask = async task => {
-  const res = await fetch('http://localhost:5000/tasks', {
+const addQuiz = async quiz => {
+  const res = await fetch('http://localhost:5000/quizes', {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
     },
-    body: JSON.stringify.task,
+    body: JSON.stringify.quiz,
   })
 
   const data = await res.json()
 
-  setTasks([...tasks, data])
+  setquizes([...quizes, data])
 }
 
-//Delete Task
+//Delete Quiz
 
-const deleteTask = async id => {
-  await fetch(`http://localhost:5000/tasks/${id}`, {
+const deleteQuiz = async id => {
+  await fetch(`http://localhost:5000/quizes/${id}`, {
     method: 'DELETE',
   })
 
-  setTasks(tasks.filter(task => task.id !== id))
+  setquizes(quizes.filter(quiz => quiz.id !== id))
 }
 
 // Toggle Reminder
@@ -46,7 +46,7 @@ const toggleReminder = async id => {
   const taskToToggle = await fetchTask(id)
   const updTask = {...taskToToggle, reminder: !taskToToggle.reminder}
 
-  const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+  const res = await fetch(`http://localhost:5000/quizes/${id}`, {
     method: 'PUT',
     headers: {
       'Content-type': 'application/json',
@@ -56,11 +56,11 @@ const toggleReminder = async id => {
 
   const data = await res.json()
 
-  setTasks(
-    tasks.map(task =>
+  setQuizes(
+    quizes.map(task =>
       task.id === id ? {...task, reminder: data.reminder} : task
     )
   )
 }
 
-console.log(tasks)
+console.log(quizes)

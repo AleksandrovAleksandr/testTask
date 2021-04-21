@@ -1,10 +1,10 @@
 import {connect} from 'react-redux'
 import {addQuestionText} from '../../store/actions/actions'
+import InputText from '../UI/InputText/InputText'
 
 const Question = ({question, addText}) => {
   return (
-    <input
-      type="text"
+    <InputText
       value={question.text}
       placeholder="Введите название вопроса..."
       onChange={e => addText(e.target.value)}

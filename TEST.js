@@ -5,13 +5,4 @@ const answers = [
   {id: 4, text: 'yellow', isRightAnswer: false},
 ]
 
-const removeItem = (answers, id) => {
-  const arr = answers.map(answer => Object.assign({}, answer))
-  return arr.filter(a => a.id !== id)
-}
-
-const arr = removeItem(answers, 2)
-
-console.log(answers)
-console.log(arr)
 console.log(answers)
